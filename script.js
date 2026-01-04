@@ -1,7 +1,7 @@
 // script.js – Holiday Query Explorer
 
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM element references
+    // DOM element references 
     const textarea = document.querySelector('#questionInput');
     const askBtn = document.querySelector('#askBtn');
     const errorDiv = document.querySelector('#errorMsg');
