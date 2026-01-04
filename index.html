@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,57 +10,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <div class="container">
+    <div class="container" role="main">
         <header>
             <h1>Holiday Query Explorer</h1>
             <p class="subtitle">Ask questions about official holidays in plain English</p>
         </header>
 
-        <main>
-            <div class="input-card">
-                <div class="input-group">
-                    <textarea id="questionInput" placeholder="e.g. Show public holidays in January 2026" rows="2"></textarea>
-                </div>
-                <div class="actions">
-                    <button id="askBtn">Ask Question</button>
-                </div>
-                <div id="errorMsg" class="error-message hidden"></div>
+        <section class="input-card">
+            <div class="input-group">
+                <textarea id="questionInput" placeholder="e.g. Show public holidays in January 2026" rows="2"
+                    aria-label="Your question about holidays"></textarea>
+            </div>
+            <div class="actions">
+                <button id="askBtn" type="button">Ask Question</button>
+            </div>
+            <div id="errorMsg" class="error-message hidden" role="alert"></div>
+        </section>
+
+        <section id="loading" class="loading hidden" aria-live="polite">
+            <div class="spinner"></div>
+            <span>Fetching results...</span>
+        </section>
+
+        <section id="resultsArea" class="results-area hidden">
+            <div class="sql-section">
+                <h2 class="section-label">Generated SQL</h2>
+                <pre><code id="sqlDisplay"></code></pre>
             </div>
 
-            <div id="loading" class="loading hidden">
-                <div class="spinner"></div>
-                <span>Fetching results...</span>
-            </div>
-
-            <div id="resultsArea" class="results-area hidden">
-                <div class="sql-section">
-                    <div class="section-label">Generated SQL</div>
-                    <pre><code id="sqlDisplay"></code></pre>
+            <div class="table-section">
+                <div class="table-header-row">
+                    <h2 class="section-label">Result Data</h2>
+                    <span id="rowCount" class="row-count-badge">0 rows</span>
                 </div>
-
-                <div class="table-section">
-                    <div class="table-header-row">
-                        <div class="section-label">Result Data</div>
-                        <span id="rowCount" class="row-count-badge">0 rows</span>
-                    </div>
-                    <div class="table-wrapper">
-                        <table id="resultsTable">
-                            <thead>
-                                <!-- Dynamic headers -->
-                            </thead>
-                            <tbody>
-                                <!-- Dynamic rows -->
-                            </tbody>
-                        </table>
-                        <div id="noResults" class="no-results hidden">No results found</div>
-                    </div>
+                <div id="tableWrapper" class="table-wrapper">
+                    <table id="resultsTable">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                    <div id="noResults" class="no-results hidden">No results found</div>
                 </div>
             </div>
-        </main>
+        </section>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
